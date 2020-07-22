@@ -2,8 +2,8 @@ package com.freeefly.iterator;
 
 import java.util.Iterator;
 
-public class DinerMenu {
-    static final  int MAX_ITEMS = 6;
+public class DinerMenu implements Menu {
+    static final int MAX_ITEMS = 6;
     int numberOfItems = 0;
     MenuItem[] menuItems;
 
@@ -19,11 +19,12 @@ public class DinerMenu {
         if (numberOfItems >= MAX_ITEMS) {
             System.out.println("죄송합니다 메뉴가 꽉 찻네요");
 
-        }else {
+        } else {
             menuItems[numberOfItems++] = item;
         }
     }
 
+    @Override
     public Iterator createIterator() {
         return new DinerMenuIterator(menuItems);
     }

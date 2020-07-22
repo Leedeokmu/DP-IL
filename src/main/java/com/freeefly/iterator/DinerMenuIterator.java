@@ -24,6 +24,15 @@ public class DinerMenuIterator implements Iterator{
 
     @Override
     public void remove() {
-        throw new UnsupportedOperationException();
+        if(position <= 0){
+            throw new IllegalStateException("next() 를 한 번도 호출하지 않은 상태에서는 삭제할 수 없습니다.");
+        }
+
+        if (items[position - 1] != null) {
+            for (int i = position - 1; i < (items.length - 1); i++) {
+                items[i] = items[i + 1];
+            }
+            items[items.length - 1] = null;
+        }
     }
 }
